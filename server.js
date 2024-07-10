@@ -1,6 +1,9 @@
 const inquirer = require('inquirer');
+// requiring database config
+const sequelize = require("./config/connection.js")
 
 
+function init (){
 inquirer.prompt(
     {
         type: 'list',
@@ -35,4 +38,10 @@ inquirer.prompt(
         case 'Update an employee role':
         break; 
     }
+})
+}
+
+sequelize.sync().then(()=>{
+    console.log("Database connected");
+    init();
 })
