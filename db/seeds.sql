@@ -3,19 +3,29 @@ VALUES('Computer engineering'),
       ("Marketing and Sales Department"),
       ("Human Resources"),
       ("Finance Department"),
-      ("Customer Service"),
-      ("Engineering"),
-      ("Risk Management"),
-      ("Protective Services"),
-      ("Finance Department"),
-      ('Web Development');
-
+      
+      
+  
 
 INSERT INTO roles( title, salary, department_id)
-VALUE("Accountant", 9000, 001);
+VALUE("Full stack", 6000, 001),
+     ("Engineering Director", 5000, 001),
+     ("Marketing Director", 5000, 002),
+     ("Marketing Specialist", 5000, 002),
+     ("Administrator, Marketing", 7000, 002),
+     ("Sales associate", 4000, 002),
+     ("HR Manager", 4500, 003),
+     ("HR Representative", 3000, 003),
+     ("Finance Director", 5000, 004),
+     ("Financial Controller", 5000, 004),
+     ("Sr. Financial Analyst", 7000, 004),
 
-INSERT INTO employees(first_name, last_name, manager_id, role_id) 
-VALUES ('Kim', 'Tan', NULL, 001),
-       ('Han', 'Cohen', NULL, 002),
-       ('Emily', 'Johnson', NULL, 003),
-       ('Lance', 'Dorji', NULL, 003);
+INSERT INTO employees(first_name, last_name,role_id, manager_id,) 
+VALUES ('Kim', 'Tan', 002, NULL),
+       ('Han', 'Cohen', 003, NULL),
+       ('Emily', 'Johnson', 007, NULL),
+       ('Lance', 'Dorji', 009, NULL);
+       ('James', 'Edwards', 001, 002),
+       ('Robert', 'Ramirez', 004, 003),
+       ('John', 'Smith', 008, 007),
+       ('David', 'Jordan', 010, 009);
