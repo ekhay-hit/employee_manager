@@ -9,9 +9,10 @@ const pool = new Pool({user:'postgres',password:'ad12', host:'localhost', databa
 
 
 async function init (){
+    console.log(`
+        `)
 
-
-await inquirer.prompt(
+ await inquirer.prompt(
     {
         type: 'list',
         message:"Choose an option",
@@ -29,6 +30,7 @@ await inquirer.prompt(
     .then ((data)=>{
         const selection = data.request;
         console.log(data.request);
+        
     switch(selection){
         case "View all departments":
             console.log('I am here');
@@ -39,30 +41,36 @@ await inquirer.prompt(
                 sql.viewAllRoles()
                 init();
         break; 
-        case 'View all employees':
+        case "View all employees":
                 sql.viewAllEmployees()
                 init();
         break; 
-        case  'Add a department':
+        
+        case  "Add a department":
+            sql.addDepartment();
+            init();
+        break;
+
+        case  "Add a role":
         break; 
-        case  'Add a role':
+        case  "Add an employee":
         break; 
-        case  'Add an employee':
-        break; 
-        case 'Update an employee role':
+        case "Update an employee role":
         break; 
         default:
             console.log('could not find the choice');
             // viewAllDepartments(pool);
            
     }
-})
-
+    console.log(`
+        `)
+    })
 }
-
 
 pool.connect(()=>{
     init();
 })
 
-module.exports = init;
+module.exports = {
+    init,
+}
