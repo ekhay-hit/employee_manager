@@ -58,6 +58,7 @@ async function init (){
             sql.addRole();
         break; 
         case  "Add an employee":
+            sql.addNewEmoployee();
         break; 
         case "Update an employee role":
         break; 

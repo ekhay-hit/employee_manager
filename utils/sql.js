@@ -112,11 +112,45 @@ function viewAllRoles(){
      });
  }
 
+  // add a new employe 
+  async function  addNewEmoployee(){
+    const input = await inquirer.prompt(
+           [
+            {
+               type:'input',
+               message:'Enter the employee name',
+               name: 'first_name'
+           },
+           {
+            type:'input',
+            message:'Enter the employee last name',
+            name: 'last_name'
+          },
+          {
+          type:'input',
+          message:'Enter role Id',
+          name: 'role_id'
+          },
+          {
+            type:'input',
+            message:'Enter manager id',
+            name: 'manager_id'
+            }
+        ]
+  
+       );
+        pool.query('INSERT INTO employees (first_name, last_name,role_id, manager_id) VALUES($1,$2,$3,$4)',values=[input.first_name,input.last_name,input.role_id,input.manager_id], (error, department) =>{
+           
+             if(error) throw error;
+             console.log(`The new employee has been added successfully `);
+       });
+   }
 module.exports = {
     viewAllDepartments,
     viewAllRoles,
     viewAllEmployees,
     addDepartment,
-    addRole
+    addRole,
+    addNewEmoployee
 }
     

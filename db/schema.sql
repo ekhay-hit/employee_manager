@@ -22,9 +22,14 @@ CREATE TABLE employees (
     id SERIAL PRIMARY KEY NOT NULL,
     first_name VARCHAR(30),
     last_name VARCHAR(30),
-    manager_id INTEGER,
-
     role_id INTEGER,
     FOREIGN KEY (role_id)
     REFERENCES roles(id)
+    ON DELETE SET NULL
+    manager_id INTEGER,
+     FOREIGN KEY (manager_id)
+    REFERENCES employees(id)
+    ON DELETE SET NULL
+
+   
 );
