@@ -9,9 +9,9 @@ const pool = new Pool({user:'postgres',password:'ad12', host:'localhost', databa
 
 
 async function init (){
+   
     console.log(`
-        `)
-
+        `);
  await inquirer.prompt(
     {
         type: 'list',
@@ -28,6 +28,7 @@ async function init (){
         ]
     })
     .then ((data)=>{
+      
         const selection = data.request;
         console.log(data.request);
         
@@ -35,23 +36,26 @@ async function init (){
         case "View all departments":
             console.log('I am here');
             sql.viewAllDepartments();
-            init();
+            // init();
         break; 
         case "View all roles":
                 sql.viewAllRoles()
-                init();
+                // init();
         break; 
         case "View all employees":
                 sql.viewAllEmployees()
-                init();
+               
+                // init();
         break; 
         
         case  "Add a department":
-            sql.addDepartment();
-            init();
+            sql.addDepartment()
+
+            // init();
         break;
 
         case  "Add a role":
+            sql.addRole();
         break; 
         case  "Add an employee":
         break; 
@@ -62,9 +66,12 @@ async function init (){
             // viewAllDepartments(pool);
            
     }
-    console.log(`
-        `)
-    })
+})
+  
+//     }).then(()=>{
+      
+//         init()
+// });
 }
 
 pool.connect(()=>{
