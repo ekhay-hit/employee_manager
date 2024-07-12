@@ -1,13 +1,14 @@
+// requiring files and packages
 const inquirer = require('inquirer');
 const sql = require("./utils/sql.js")
-// requiring database config
-// const sequelize = require("./config/connection.js")
 const {Pool}= require('pg');
 const viewAllDepartments = require('./utils/sql.js');
+
+// creating pool to connect to database and passing credintials 
 const pool = new Pool({user:'postgres',password:'ad12', host:'localhost', database:'employee_db'}, console.log('Connected to the employee_db database'));
 
 
-
+// init function for getting data from user and logic to run quiries function base on the user input
 async function init (){
    
     console.log(`
@@ -28,12 +29,14 @@ async function init (){
     })
     .then ((data)=>{
       
+        // assing switch conditon varaible 
         const selection = data.request;
+        // printing users request
         console.log(data.request);
-        
+
+     // switch use to run quiries base on the user input    
     switch(selection){
         case "View all departments":
-            console.log('I am here');
             sql.viewAllDepartments();
            
         break; 
@@ -68,4 +71,6 @@ pool.connect(()=>{
     init();
 })
 
+// ecporting functions
 module.exports.init = init;
+module.exports.pool = pool;

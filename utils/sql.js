@@ -1,13 +1,9 @@
-const {Pool} = require('pg');
-
 const inquirer = require('inquirer');
 const main = require("../server.js")
-const pool = new Pool({user:'postgres',password:'ad12', host:'localhost', database:'employee_db'}, console.log('Connected to the employee_db database'));
 
-pool.connect();
-
+// view all the departments
 function viewAllDepartments(){
-  pool.query('SELECT * FROM departments',function(err, {rows}){
+  main.pool.query('SELECT * FROM departments',function(err, {rows}){
 
     console.log(`
       `);
@@ -16,8 +12,9 @@ function viewAllDepartments(){
   main.init();
 }
 
+// view all the roles
 function viewAllRoles(){
-    pool.query('SELECT * FROM roles',function(err, {rows}){
+    main.pool.query('SELECT * FROM roles',function(err, {rows}){
       console.log(`
       `);
       console.table(rows);
@@ -27,8 +24,9 @@ function viewAllRoles(){
     main.init();
   }
 
+// View all the employees
   function viewAllEmployees(){
-    pool.query('SELECT * FROM employees',function(err, {rows}){
+    main.pool.query('SELECT * FROM employees',function(err, {rows}){
       console.log(`
         `);
       console.table(rows);
@@ -48,10 +46,10 @@ function viewAllRoles(){
     );
         const newDepartment = input.department_name;
         console.log(newDepartment);
-     pool.query('INSERT INTO departments (department_name) VALUES($1)',[newDepartment], (error, department) =>{
+     main.pool.query('INSERT INTO departments (department_name) VALUES($1)',[newDepartment], (error, department) =>{
         
           if(error) throw error;
-          console.log(`The department ${newDepartment} has been added successfully `);
+          console.log(`\nThe department ${newDepartment} has been added successfully `);
           
     });
     main.init();
@@ -79,7 +77,7 @@ function viewAllRoles(){
       ]
 
      );
-      pool.query('INSERT INTO roles (title, salary, department_id) VALUES($1,$2,$3)',values=[input.title,input.salary,input.department_id], (error, department) =>{
+      main.pool.query('INSERT INTO roles (title, salary, department_id) VALUES($1,$2,$3)',values=[input.title,input.salary,input.department_id], (error, department) =>{
          
            if(error) throw error;
            console.log(`The new role has been added successfully `);
@@ -115,13 +113,15 @@ function viewAllRoles(){
         ]
   
        );
-        pool.query('INSERT INTO employees (first_name, last_name,role_id, manager_id) VALUES($1,$2,$3,$4)',values=[input.first_name,input.last_name,input.role_id,input.manager_id], (error, department) =>{
+        main.pool.query('INSERT INTO employees (first_name, last_name,role_id, manager_id) VALUES($1,$2,$3,$4)',values=[input.first_name,input.last_name,input.role_id,input.manager_id], (error, department) =>{
            
              if(error) throw error;
              console.log(`The new employee has been added successfully `);
        });
        main.init();
    }
+
+// exporting the functions 
 module.exports = {
     viewAllDepartments,
     viewAllRoles,
