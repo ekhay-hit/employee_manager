@@ -80,7 +80,7 @@ function viewAllRoles(){
       main.pool.query('INSERT INTO roles (title, salary, department_id) VALUES($1,$2,$3)',values=[input.title,input.salary,input.department_id], (error, department) =>{
          
            if(error) throw error;
-           console.log(`The new role has been added successfully `);
+           console.log(`\nThe new role has been added successfully `);
           
      });
      main.init();
@@ -116,7 +116,7 @@ function viewAllRoles(){
         main.pool.query('INSERT INTO employees (first_name, last_name,role_id, manager_id) VALUES($1,$2,$3,$4)',values=[input.first_name,input.last_name,input.role_id,input.manager_id], (error, department) =>{
            
              if(error) throw error;
-             console.log(`The new employee has been added successfully `);
+             console.log(`\nThe new employee has been added successfully `);
        });
        main.init();
    }

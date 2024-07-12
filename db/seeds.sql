@@ -25,7 +25,7 @@ VALUES ('Kim', 'Tan', 002, NULL),
        ('Han', 'Cohen', 003, NULL),
        ('Emily', 'Johnson', 007, NULL),
        ('Lance', 'Dorji', 009, NULL),
-       ('James', 'Edwards', 001, 002),
-       ('Robert', 'Ramirez', 004, 003),
-       ('John', 'Smith', 008, 007),
-       ('David', 'Jordan', 010, 009);
+       ('James', 'Edwards', 001, 001),
+       ('Robert', 'Ramirez', 004, 002),
+       ('John', 'Smith', 008, 003),
+       ('David', 'Jordan', 11, 004);
