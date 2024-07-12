@@ -38,4 +38,4 @@ There are not test available for this project
 * Githab repository: ekhay-hit
 
 ## Links
-* link to record video:
+* link to record video: https://watch.screencastify.com/v/Pwmp2W1hISRzVWUZabQM
