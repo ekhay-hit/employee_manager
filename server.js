@@ -24,7 +24,6 @@ async function init (){
             "Add a department",
             "Add a role",
             "Add an employee",
-            "Update an employee role",
         ]
     })
     .then ((data)=>{
@@ -36,49 +35,37 @@ async function init (){
         case "View all departments":
             console.log('I am here');
             sql.viewAllDepartments();
-            // init();
+           
         break; 
         case "View all roles":
                 sql.viewAllRoles()
-                // init();
+              
         break; 
         case "View all employees":
                 sql.viewAllEmployees()
-               
-                // init();
+           
         break; 
         
         case  "Add a department":
             sql.addDepartment()
-
-            // init();
         break;
 
         case  "Add a role":
-            sql.addRole();
+            sql.addRole();   
         break; 
+
         case  "Add an employee":
-            sql.addNewEmoployee();
-        break; 
-        case "Update an employee role":
-        break; 
+            sql.addNewEmoployee();           
+        break;
         default:
-            console.log('could not find the choice');
-            // viewAllDepartments(pool);
-           
+            console.log('could not find the choice');      
     }
 })
   
-//     }).then(()=>{
-      
-//         init()
-// });
 }
 
 pool.connect(()=>{
     init();
 })
 
-module.exports = {
-    init,
-}
+module.exports.init = init;

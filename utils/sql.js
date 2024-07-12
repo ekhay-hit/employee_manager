@@ -1,7 +1,7 @@
 const {Pool} = require('pg');
 
 const inquirer = require('inquirer');
-
+const main = require("../server.js")
 const pool = new Pool({user:'postgres',password:'ad12', host:'localhost', database:'employee_db'}, console.log('Connected to the employee_db database'));
 
 pool.connect();
@@ -13,6 +13,7 @@ function viewAllDepartments(){
       `);
     console.table(rows); 
   });
+  main.init();
 }
 
 function viewAllRoles(){
@@ -23,6 +24,7 @@ function viewAllRoles(){
 
 
     });
+    main.init();
   }
 
   function viewAllEmployees(){
@@ -31,6 +33,7 @@ function viewAllRoles(){
         `);
       console.table(rows);
     });
+    main.init();
   }
 
 
@@ -49,39 +52,10 @@ function viewAllRoles(){
         
           if(error) throw error;
           console.log(`The department ${newDepartment} has been added successfully `);
+          
     });
+    main.init();
 }
-
-
- // add a new role 
- async function  addRole(){
-  const input = await inquirer.prompt(
-         [
-          {
-             type:'input',
-             message:'Enter the role title',
-             name: 'title'
-         },
-         {
-          type:'input',
-          message:'Enter the salary',
-          name: 'salary'
-        },
-        {
-        type:'input',
-        message:'Enter Department Id',
-        name: 'department_id'
-        }
-      ]
-
-     );
-      pool.query('INSERT INTO roles (title, salary, department_id) VALUES($1,$2,$3)',values=[input.title,input.salary,input.department_id], (error, department) =>{
-         
-           if(error) throw error;
-           console.log(`The new role has been added successfully `);
-     });
- }
-
 
   // add a new role 
  async function  addRole(){
@@ -109,7 +83,9 @@ function viewAllRoles(){
          
            if(error) throw error;
            console.log(`The new role has been added successfully `);
+          
      });
+     main.init();
  }
 
   // add a new employe 
@@ -144,6 +120,7 @@ function viewAllRoles(){
              if(error) throw error;
              console.log(`The new employee has been added successfully `);
        });
+       main.init();
    }
 module.exports = {
     viewAllDepartments,
