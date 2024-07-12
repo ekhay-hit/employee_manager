@@ -1,4 +1,4 @@
-# employee_manager
+# sql_employee_manager_database
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
      
